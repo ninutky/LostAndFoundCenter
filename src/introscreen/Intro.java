@@ -15,6 +15,18 @@ public class Intro extends JFrame {
 		setLocationRelativeTo(null);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		try{
+
+			Thread.sleep(3000);
+
+		}catch(InterruptedException ie){
+
+			System.out.println(ie.getMessage());
+
+		}
+
+		setVisible(false);
 	}
 	
 	public void paint(Graphics g) {
