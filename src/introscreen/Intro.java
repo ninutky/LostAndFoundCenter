@@ -1,13 +1,19 @@
 package introscreen;
 
+import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
+import registration_get.MainDesign;
 
 public class Intro extends JFrame {
-	private Image background=new ImageIcon(Intro.class.getResource("../image/first.png")).getImage();
+	private Image background = new ImageIcon(Intro.class.getResource("../image/intro.png")).getImage();
 	
 	public Intro() {
 		setSize(600, 900);
@@ -35,6 +41,7 @@ public class Intro extends JFrame {
 	
 	public static void main(String[] args) {
 		new Intro();
+		new MainDesign();
 
 	}
 
