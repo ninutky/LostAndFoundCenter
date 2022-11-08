@@ -7,6 +7,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.TextField;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -27,6 +29,7 @@ public class RegistrationFound extends JFrame {
 		var c2 = new Color(239, 177, 28);	// ±Û¾¾
 		var f1 = new Font("KoPubµ¸¿òÃ¼ Bold", Font.PLAIN, 35);
 		var f2 = new Font("KoPubµ¸¿òÃ¼ Medium", Font.PLAIN, 25);
+		var f3 = new Font("KoPubµ¸¿òÃ¼ Medium", Font.PLAIN, 20);
 		
 		
 		p.setLayout(null);
@@ -43,10 +46,10 @@ public class RegistrationFound extends JFrame {
 		var jl3 = new JLabel("½Àµæ ³¯Â¥");
 		var jl4 = new JLabel("±âÅ¸ (¹°°ÇÀÇ Æ¯Â¡ µî)");
 		
-		var tf1 = new JTextField(20);
-		var tf2 = new JTextField(20);
-		var tf3 = new JTextField(20);
-		var tf4 = new JTextField(20);
+		var tf1 = new JTextField();
+		var tf2 = new JTextField();
+		var tf3 = new JTextField();
+		var tf4 = new JTextField(5);
 		
 		// ½Àµæ, ºÐ½Ç ¹öÆ°
 		rb1.setSelected(true);
@@ -80,6 +83,19 @@ public class RegistrationFound extends JFrame {
 		tf2.setBounds(75, 410, 450, 40);
 		tf3.setBounds(75, 510, 450, 40);
 		tf4.setBounds(75, 610, 450, 40);
+		
+		tf1.setFont(f3);
+		tf2.setFont(f3);
+		tf3.setFont(f3);
+		tf4.setFont(f3);
+		
+		// ±ÛÀÚ¼ö Á¦ÇÑ
+		tf1.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent ke) {
+				JTextField src = (JTextField) ke.getSource();
+				if (src.getText().length() >= 6) ke.consume();
+			}
+		});
 		
 		getContentPane().add(p);
 		p.setBackground(c1);
