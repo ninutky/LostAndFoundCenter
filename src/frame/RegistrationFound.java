@@ -9,6 +9,8 @@ import java.awt.Image;
 import java.awt.TextField;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -16,9 +18,15 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SpinnerDateModel;
 import javax.swing.SwingConstants;
+
+import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
+import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
+import net.sourceforge.jdatepicker.impl.UtilDateModel;
 
 public class RegistrationFound extends JFrame {
 
@@ -48,7 +56,12 @@ public class RegistrationFound extends JFrame {
 		
 		var tf1 = new JTextField();
 		var tf2 = new JTextField();
-		var tf3 = new JTextField();
+		
+		// 날짜 선택
+		var model = new UtilDateModel();
+		var datePanel = new JDatePanelImpl(model);
+		var datePicker = new JDatePickerImpl(datePanel);
+		
 		var tf4 = new JTextField(5);
 		
 		// 습득, 분실 버튼
@@ -81,12 +94,12 @@ public class RegistrationFound extends JFrame {
 		
 		tf1.setBounds(75, 310, 450, 40);
 		tf2.setBounds(75, 410, 450, 40);
-		tf3.setBounds(75, 510, 450, 40);
-		tf4.setBounds(75, 610, 450, 40);
+		datePicker.setBounds(75, 510, 450, 25);
+		tf4.setBounds(75, 610, 450, 200);
 		
 		tf1.setFont(f3);
 		tf2.setFont(f3);
-		tf3.setFont(f3);
+		datePicker.setFont(f3);
 		tf4.setFont(f3);
 		
 		// 글자수 제한
@@ -108,18 +121,21 @@ public class RegistrationFound extends JFrame {
 		p.add(rb2);
 		
 		p.add(jl1);
-		p.add(tf1);
 		p.add(jl2);
-		p.add(tf2);
 		p.add(jl3);
-		p.add(tf3);
 		p.add(jl4);
+		p.add(tf1);
+		p.add(tf2);
+		p.add(datePicker);
 		p.add(tf4);
+		
+		
 
 		setSize(600, 900);
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 
 	}
 

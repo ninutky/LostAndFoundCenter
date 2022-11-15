@@ -36,11 +36,16 @@ public class main extends JFrame {
          dispose();
 //         new lost().setVisible(true);
       });
+      
       add(bl);
       
 
       bf.setLayout(null);
       bf.setBounds(310, 350, 150, 150);
+      bf.addActionListener(e -> {
+          dispose();
+//          new lost().setVisible(true);
+       });
       add(bf);
 
    }
