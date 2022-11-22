@@ -1,6 +1,7 @@
 package frame;
 
 import java.awt.BorderLayout;
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -24,9 +25,11 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 import javax.swing.SwingConstants;
 
+import button.RoundedButton;
 import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
 import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
 import net.sourceforge.jdatepicker.impl.UtilDateModel;
+import javax.swing.JButton;
 
 public class RegistrationFound extends JFrame {
 
@@ -38,6 +41,7 @@ public class RegistrationFound extends JFrame {
 		var f1 = new Font("KoPub돋움체 Bold", Font.PLAIN, 35);
 		var f2 = new Font("KoPub돋움체 Medium", Font.PLAIN, 25);
 		var f3 = new Font("KoPub돋움체 Medium", Font.PLAIN, 20);
+		var f4 = new Font("KoPub돋움체 Medium", Font.PLAIN, 15);
 		
 		
 		p.setLayout(null);
@@ -49,20 +53,18 @@ public class RegistrationFound extends JFrame {
 		var rb1 = new JRadioButton("습득");
 		var rb2 = new JRadioButton("분실");
 		
-		var jl1 = new JLabel("습득물");
-		var jl2 = new JLabel("습득 장소");
-		var jl3 = new JLabel("습득 날짜");
+		var jl1 = new JLabel("습득 날짜");
+		var jl2 = new JLabel("습득물");
+		var jl3 = new JLabel("습득 장소");
 		var jl4 = new JLabel("기타 (물건의 특징 등)");
-		
-		var tf1 = new JTextField();
-		var tf2 = new JTextField();
 		
 		// 날짜 선택
 		var model = new UtilDateModel();
 		var datePanel = new JDatePanelImpl(model);
 		var datePicker = new JDatePickerImpl(datePanel);
-		
-		var tf4 = new JTextField(5);
+		var tf1 = new JTextField();
+		var tf2 = new JTextField();
+		var tf3 = new JTextField(5);
 		
 		// 습득, 분실 버튼
 		rb1.setSelected(true);
@@ -78,9 +80,9 @@ public class RegistrationFound extends JFrame {
 		rb2.setOpaque(false);
 		
 		jl1.setBounds(75, 265, 450, 45);
-		jl2.setBounds(75, 365, 450, 45);
-		jl3.setBounds(75, 465, 450, 45);
-		jl4.setBounds(75, 565, 450, 45);
+		jl2.setBounds(75, 350, 450, 45);
+		jl3.setBounds(75, 450, 450, 45);
+		jl4.setBounds(75, 550, 450, 45);
 		jl1.setFont(f2);
 		jl2.setFont(f2);
 		jl3.setFont(f2);
@@ -92,15 +94,15 @@ public class RegistrationFound extends JFrame {
 		jl4.setForeground(c2);
 		
 		
-		tf1.setBounds(75, 310, 450, 40);
-		tf2.setBounds(75, 410, 450, 40);
-		datePicker.setBounds(75, 510, 450, 25);
-		tf4.setBounds(75, 610, 450, 200);
+		datePicker.setBounds(75, 310, 450, 25);
+		tf1.setBounds(75, 395, 450, 40);
+		tf2.setBounds(75, 495, 450, 40);
+		tf3.setBounds(75, 595, 450, 100);
 		
 		tf1.setFont(f3);
 		tf2.setFont(f3);
 		datePicker.setFont(f3);
-		tf4.setFont(f3);
+		tf3.setFont(f3);
 		
 		// 글자수 제한
 		tf1.addKeyListener(new KeyAdapter() {
@@ -127,9 +129,20 @@ public class RegistrationFound extends JFrame {
 		p.add(tf1);
 		p.add(tf2);
 		p.add(datePicker);
-		p.add(tf4);
+		p.add(tf3);
 		
+		// 사진 첨부 버튼
+		RoundedButton btnNewButton = new RoundedButton("사진첨부");
+		btnNewButton.setBounds(320, 730, 95, 30);
+		btnNewButton.setFont(f4);
+		p.add(btnNewButton);
 		
+		// 등록하기 버튼
+		RoundedButton btnNewButton_1 = new RoundedButton("등록하기");
+		btnNewButton_1.setBounds(430, 730, 95, 30);
+		btnNewButton_1.setFont(f4);
+		btnNewButton.paintComponents(getGraphics());
+		p.add(btnNewButton_1);
 
 		setSize(600, 900);
 		setResizable(false);
@@ -143,5 +156,6 @@ public class RegistrationFound extends JFrame {
 		new RegistrationFound().setVisible(true);
 
 	}
-
+	
+	
 }

@@ -39,7 +39,7 @@ public class Intro extends JFrame {
 	
 	public static void main(String[] args) {
 		new Intro();
-		new RegistrationFound();
+		new RegistrationFound().setVisible(true);;
 
 	}
 
