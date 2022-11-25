@@ -19,6 +19,7 @@ import java.util.Date;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.text.html.ImageView;
 
 import button.RoundedButton;
 import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
@@ -28,8 +29,7 @@ import net.sourceforge.jdatepicker.impl.UtilDateModel;
 public class Registration extends JFrame {
 
 	public Registration() {
-		// TODO 사진 첨부 기능
-		// TODO 캘린더 예쁘게
+		// TODO 날짜 선택 제한
 		// TODO 디비 연동
 		// TODO 로그인 구현
 		// TODO 수정 구현
@@ -46,7 +46,7 @@ public class Registration extends JFrame {
 		p.setLayout(null);
 		l.setFont(f1);
 		l.setForeground(c2);
-		l.setBounds(75, 60, 135, 45);
+		l.setBounds(75, 105, 135, 45);
 
 		// 습득, 분실 버튼
 		var group = new ButtonGroup();
@@ -59,31 +59,31 @@ public class Registration extends JFrame {
 		var jl4 = new JLabel("기타 (물건의 특징 등)");
 
 		rb1.setSelected(true);
-		rb1.setBounds(75, 150, 70, 30);
+		rb1.setBounds(75, 195, 70, 30);
 		rb1.setBorderPainted(false);
 		rb1.setFont(f2);
 		rb1.setFocusable(false);
 		rb1.setOpaque(false);
 		
-		rb2.setBounds(75, 200, 70, 30);
+		rb2.setBounds(75, 250, 70, 30);
 		rb2.setFont(f2);
 		rb2.setBorderPainted(false);
 		rb2.setFocusable(false);
 		rb2.setOpaque(false);
 		
-		jl1.setBounds(75, 265, 450, 45);
+		jl1.setBounds(75, 310, 450, 45);
 		jl1.setFont(f2);
 		jl1.setForeground(c2);
 		
 		jl2.setFont(f2);
-		jl2.setBounds(75, 350, 450, 45);
+		jl2.setBounds(75, 395, 450, 45);
 		jl2.setForeground(c2);
 		
 		jl3.setFont(f2);
-		jl3.setBounds(75, 450, 450, 45);
+		jl3.setBounds(75, 495, 450, 45);
 		jl3.setForeground(c2);
 		
-		jl4.setBounds(75, 550, 450, 45);
+		jl4.setBounds(75, 595, 450, 45);
 		jl4.setFont(f2);
 		jl4.setForeground(c2);
 
@@ -128,10 +128,6 @@ public class Registration extends JFrame {
 			}
 		});
 
-		File file = new File("bg.png");
-		// BufferedImage img = ImageIO.read(file);
-
-
 		// 날짜 선택
 		var model = new UtilDateModel();
 		var datePanel = new JDatePanelImpl(model);
@@ -140,16 +136,16 @@ public class Registration extends JFrame {
 		var tf2 = new JTextField();
 		var tf3 = new JTextField(5);
 
-		tf1.setBounds(75, 395, 450, 40);
+		tf1.setBounds(75, 440, 450, 40);
 		tf1.setFont(f3);
 		
-		tf2.setBounds(75, 495, 450, 40);
+		tf2.setBounds(75, 540, 450, 40);
 		tf2.setFont(f3);
 		
-		tf3.setBounds(75, 595, 450, 100);
+		tf3.setBounds(75, 640, 450, 100);
 		tf3.setFont(f3);
 	
-		datePicker.setBounds(75, 310, 450, 25);
+		datePicker.setBounds(75, 355, 450, 25);
 		datePicker.setFont(f3);
 		
 
@@ -183,13 +179,40 @@ public class Registration extends JFrame {
 
 		// 사진 첨부 버튼
 		RoundedButton btnNewButton = new RoundedButton("사진첨부");
-		btnNewButton.setBounds(320, 730, 95, 30);
+		btnNewButton.setBounds(320, 775, 95, 30);
 		btnNewButton.setFont(f4);
+		
+		JLabel lbl = new JLabel();
+		
+		btnNewButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				// 파일 열어 사진 가져오기
+				JFileChooser chooser = new JFileChooser();
+				chooser.showOpenDialog(null);
+				File f = chooser.getSelectedFile();
+				String filename = f.getAbsolutePath();
+				Image getAbsolutePath = null;
+				ImageIcon icon = new ImageIcon(filename);
+
+				// 사진 비율 맞추기
+				Image img = icon.getImage();
+				Image changeImg = img.getScaledInstance(lbl.getWidth(), lbl.getHeight(), Image.SCALE_SMOOTH);
+				ImageIcon changeIcon = new ImageIcon(changeImg);
+				lbl.setIcon(changeIcon);
+				lbl.setBounds(320, 105, 200, 200);
+				
+			}
+		});
+
+		p.add(lbl);
 		p.add(btnNewButton);
 
 		// 등록하기 버튼
 		RoundedButton btnNewButton_1 = new RoundedButton("등록하기");
-		btnNewButton_1.setBounds(430, 730, 95, 30);
+		btnNewButton_1.setBounds(429, 775, 95, 30);
 		btnNewButton_1.setFont(f4);
 		btnNewButton.paintComponents(getGraphics());
 		p.add(btnNewButton_1);
