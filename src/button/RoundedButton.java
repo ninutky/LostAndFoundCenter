@@ -37,7 +37,6 @@ public class RoundedButton extends JButton {
         decorate();
     }
 
-    
     // 기본 모양에 있는 테두리 없앰, 불투명
     protected void decorate() {
         setBorderPainted(false);
