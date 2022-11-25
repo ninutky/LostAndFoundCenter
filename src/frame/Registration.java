@@ -46,7 +46,7 @@ public class Registration extends JFrame {
 	JDatePickerImpl datePicker = new JDatePickerImpl(datePanel);
 	HintTextField tf1 = new HintTextField("예) 에어팟, 검정색 카드 ");
 	HintTextField tf2 = new HintTextField("예) 응용3실, 체육관");
-	HintTextField tf3 = new HintTextField("");
+	JTextArea tf3;	// TODO 글자수 제한 걸기
 	
 	// 사진 첨부 버튼
 	RoundedButton btnNewButton = new RoundedButton("사진첨부");
@@ -69,6 +69,9 @@ public class Registration extends JFrame {
 		// TODO 디비 연동
 		// TODO 로그인 구현
 		// TODO 수정 구현
+		
+		tf3 = new JTextArea(1, 2);
+		tf3.setLineWrap(true);
 
 		p.setLayout(null);
 		l.setFont(f1);

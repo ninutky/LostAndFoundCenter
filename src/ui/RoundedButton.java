@@ -65,7 +65,7 @@ public class RoundedButton extends JButton {
         }
 
         // 가로, 세로 크기만큼 10의 둥글기
-        graphics.fillRoundRect(0, 0, width, height, 15, 15);
+        graphics.fillRoundRect(0, 0, width, height, 30, 30);
 
         FontMetrics fontMetrics = graphics.getFontMetrics();
         Rectangle stringBounds = fontMetrics.getStringBounds(this.getText(), graphics).getBounds();

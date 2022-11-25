@@ -63,7 +63,7 @@ public class main extends JFrame {
 
 		btn.setText("등록하기");
 		btn.setFont(f3);
-		btn.setBounds(140, 480, 320, 74);
+		btn.setBounds(140, 499, 320, 58);
 		p.add(btn);
 
 		setTitle("lost & found");// 타이틀
