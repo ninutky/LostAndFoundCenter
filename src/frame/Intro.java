@@ -14,6 +14,7 @@ public class Intro extends JFrame {
 	private Image background = new ImageIcon(Intro.class.getResource("../image/intro.png")).getImage();
 	
 	public Intro() {
+		setTitle("lost & found");
 		setSize(600, 900);
 		setResizable(false);
 		setLocationRelativeTo(null);
@@ -22,7 +23,7 @@ public class Intro extends JFrame {
 		
 		try{
 
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 
 		}catch(InterruptedException ie){
 

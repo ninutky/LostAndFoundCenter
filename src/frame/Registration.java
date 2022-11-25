@@ -21,27 +21,53 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.text.html.ImageView;
 
-import button.RoundedButton;
 import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
 import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
 import net.sourceforge.jdatepicker.impl.UtilDateModel;
+import ui.RoundedButton;
 
 public class Registration extends JFrame {
+	JPanel p = new JPanel();
+	JLabel l = new JLabel("등록하기");
+	
+	ButtonGroup group = new ButtonGroup();
+	JRadioButton rb1 = new JRadioButton("습득");
+	JRadioButton rb2 = new JRadioButton("분실");
+	
+	JLabel jl1 = new JLabel("습득 날짜");
+	JLabel jl2 = new JLabel("습득물");
+	JLabel jl3 = new JLabel("습득 장소");
+	JLabel jl4 = new JLabel("기타 (물건의 특징 등)");
+	
+	// 날짜 선택
+	UtilDateModel model = new UtilDateModel();
+	JDatePanelImpl datePanel = new JDatePanelImpl(model);
+	JDatePickerImpl datePicker = new JDatePickerImpl(datePanel);
+	JTextField tf1 = new JTextField();
+	JTextField tf2 = new JTextField();
+	JTextField tf3 = new JTextField(5);
+	
+	// 사진 첨부 버튼
+	RoundedButton btnNewButton = new RoundedButton("사진첨부");
+	
+	// 뒤로가기 버튼
+	ImageIcon btImage = new ImageIcon(lost.class.getResource("../image/bbtn.png"));
+	JButton bback = new JButton(btImage);
+	
+	Color c1 = new Color(0, 129, 86); // 배경 (초록)
+	Color c2 = new Color(239, 177, 28); // 글씨 (노랑)
+	Font f1 = new Font("KoPub돋움체 Bold", Font.PLAIN, 35);
+	Font f2 = new Font("KoPub돋움체 Medium", Font.PLAIN, 25);
+	Font f3 = new Font("KoPub돋움체 Medium", Font.PLAIN, 20);
+	Font f4 = new Font("KoPub돋움체 Medium", Font.PLAIN, 15);
 
 	public Registration() {
+		// TODO 기타 JLabel 위로 정렬
+		// TODO 라디오 버튼 예쁘게
 		// TODO 날짜 선택 제한
 		// TODO 디비 연동
 		// TODO 로그인 구현
 		// TODO 수정 구현
-
-		var p = new JPanel();
-		var l = new JLabel("등록하기");
-		var c1 = new Color(0, 129, 86); // 배경
-		var c2 = new Color(239, 177, 28); // 글씨
-		var f1 = new Font("KoPub돋움체 Bold", Font.PLAIN, 35);
-		var f2 = new Font("KoPub돋움체 Medium", Font.PLAIN, 25);
-		var f3 = new Font("KoPub돋움체 Medium", Font.PLAIN, 20);
-		var f4 = new Font("KoPub돋움체 Medium", Font.PLAIN, 15);
 
 		p.setLayout(null);
 		l.setFont(f1);
@@ -49,15 +75,6 @@ public class Registration extends JFrame {
 		l.setBounds(75, 105, 135, 45);
 
 		// 습득, 분실 버튼
-		var group = new ButtonGroup();
-		var rb1 = new JRadioButton("습득");
-		var rb2 = new JRadioButton("분실");
-		
-		var jl1 = new JLabel("습득 날짜");
-		var jl2 = new JLabel("습득물");
-		var jl3 = new JLabel("습득 장소");
-		var jl4 = new JLabel("기타 (물건의 특징 등)");
-
 		rb1.setSelected(true);
 		rb1.setBounds(75, 195, 70, 30);
 		rb1.setBorderPainted(false);
@@ -71,6 +88,7 @@ public class Registration extends JFrame {
 		rb2.setFocusable(false);
 		rb2.setOpaque(false);
 		
+		// Label
 		jl1.setBounds(75, 310, 450, 45);
 		jl1.setFont(f2);
 		jl1.setForeground(c2);
@@ -109,9 +127,6 @@ public class Registration extends JFrame {
 		});
 
 		// 뒤로가기 버튼
-		ImageIcon btImage = new ImageIcon(lost.class.getResource("../image/bbtn.png"));
-		var bback = new JButton(btImage);
-		
 		bback.setBorderPainted(false);
 	    bback.setFocusPainted(false);
 	    bback.setBackground(c1);
@@ -129,15 +144,9 @@ public class Registration extends JFrame {
 		});
 
 		// 날짜 선택
-		var model = new UtilDateModel();
-		var datePanel = new JDatePanelImpl(model);
-		var datePicker = new JDatePickerImpl(datePanel);
-		var tf1 = new JTextField();
-		var tf2 = new JTextField();
-		var tf3 = new JTextField(5);
-
 		tf1.setBounds(75, 440, 450, 40);
 		tf1.setFont(f3);
+		tf2.setToolTipText("");
 		
 		tf2.setBounds(75, 540, 450, 40);
 		tf2.setFont(f3);
@@ -178,7 +187,6 @@ public class Registration extends JFrame {
 		p.add(tf3);
 
 		// 사진 첨부 버튼
-		RoundedButton btnNewButton = new RoundedButton("사진첨부");
 		btnNewButton.setBounds(320, 775, 95, 30);
 		btnNewButton.setFont(f4);
 		
@@ -202,21 +210,23 @@ public class Registration extends JFrame {
 				Image changeImg = img.getScaledInstance(lbl.getWidth(), lbl.getHeight(), Image.SCALE_SMOOTH);
 				ImageIcon changeIcon = new ImageIcon(changeImg);
 				lbl.setIcon(changeIcon);
-				lbl.setBounds(320, 105, 200, 200);
 				
 			}
 		});
-
+		
+		lbl.setBounds(320, 105, 200, 200);
+		
 		p.add(lbl);
 		p.add(btnNewButton);
 
 		// 등록하기 버튼
 		RoundedButton btnNewButton_1 = new RoundedButton("등록하기");
-		btnNewButton_1.setBounds(429, 775, 95, 30);
+		btnNewButton_1.setBounds(430, 775, 95, 30);
 		btnNewButton_1.setFont(f4);
 		btnNewButton.paintComponents(getGraphics());
 		p.add(btnNewButton_1);
 
+		setTitle("lost & found");
 		setSize(600, 900);
 		setResizable(false);
 		setLocationRelativeTo(null);
