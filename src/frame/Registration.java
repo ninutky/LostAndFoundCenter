@@ -24,6 +24,7 @@ import javax.swing.text.html.ImageView;
 import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
 import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
 import net.sourceforge.jdatepicker.impl.UtilDateModel;
+import ui.HintTextField;
 import ui.RoundedButton;
 
 public class Registration extends JFrame {
@@ -43,9 +44,9 @@ public class Registration extends JFrame {
 	UtilDateModel model = new UtilDateModel();
 	JDatePanelImpl datePanel = new JDatePanelImpl(model);
 	JDatePickerImpl datePicker = new JDatePickerImpl(datePanel);
-	JTextField tf1 = new JTextField();
-	JTextField tf2 = new JTextField();
-	JTextField tf3 = new JTextField(5);
+	HintTextField tf1 = new HintTextField("예) 에어팟, 검정색 카드 ");
+	HintTextField tf2 = new HintTextField("예) 응용3실, 체육관");
+	HintTextField tf3 = new HintTextField("");
 	
 	// 사진 첨부 버튼
 	RoundedButton btnNewButton = new RoundedButton("사진첨부");
