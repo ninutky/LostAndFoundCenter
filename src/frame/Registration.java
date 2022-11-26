@@ -24,6 +24,7 @@ import javax.swing.text.html.ImageView;
 import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
 import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
 import net.sourceforge.jdatepicker.impl.UtilDateModel;
+import ui.HintTextArea;
 import ui.HintTextField;
 import ui.RoundedButton;
 
@@ -46,7 +47,7 @@ public class Registration extends JFrame {
 	JDatePickerImpl datePicker = new JDatePickerImpl(datePanel);
 	HintTextField tf1 = new HintTextField("예) 에어팟, 검정색 카드 ");
 	HintTextField tf2 = new HintTextField("예) 응용3실, 체육관");
-	JTextArea tf3;	// TODO 글자수 제한 걸기
+	HintTextArea tf3 = new HintTextArea("예) 강아지 스티커가 붙어 있어요.");;	// TODO 글자수 제한 걸기
 	
 	// 사진 첨부 버튼
 	RoundedButton btnNewButton = new RoundedButton("사진첨부");
@@ -70,7 +71,6 @@ public class Registration extends JFrame {
 		// TODO 로그인 구현
 		// TODO 수정 구현
 		
-		tf3 = new JTextArea(1, 2);
 		tf3.setLineWrap(true);
 
 		p.setLayout(null);
