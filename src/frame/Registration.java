@@ -47,10 +47,12 @@ public class Registration extends JFrame {
 	JDatePickerImpl datePicker = new JDatePickerImpl(datePanel);
 	HintTextField tf1 = new HintTextField("예) 에어팟, 검정색 카드 ");
 	HintTextField tf2 = new HintTextField("예) 응용3실, 체육관");
-	HintTextArea tf3 = new HintTextArea("예) 강아지 스티커가 붙어 있어요.");;	// TODO 글자수 제한 걸기
+	HintTextArea tf3 = new HintTextArea("예) 강아지 스티커가 붙어 있어요");;
 	
 	// 사진 첨부 버튼
 	RoundedButton btnNewButton = new RoundedButton("사진첨부");
+	
+	String filename = "";
 	
 	// 뒤로가기 버튼
 	ImageIcon btImage = new ImageIcon(lost.class.getResource("../image/bbtn.png"));
@@ -64,14 +66,10 @@ public class Registration extends JFrame {
 	Font f4 = new Font("KoPub돋움체 Medium", Font.PLAIN, 15);
 
 	public Registration() {
-		// TODO 기타 JLabel 위로 정렬
-		// TODO 라디오 버튼 예쁘게
 		// TODO 날짜 선택 제한
 		// TODO 디비 연동
 		// TODO 로그인 구현
 		// TODO 수정 구현
-		
-		tf3.setLineWrap(true);
 
 		p.setLayout(null);
 		l.setFont(f1);
@@ -80,17 +78,19 @@ public class Registration extends JFrame {
 
 		// 습득, 분실 버튼
 		rb1.setSelected(true);
-		rb1.setBounds(75, 195, 70, 30);
+		rb1.setBounds(60, 195, 200, 30);
 		rb1.setBorderPainted(false);
 		rb1.setFont(f2);
 		rb1.setFocusable(false);
 		rb1.setOpaque(false);
+		rb1.setIcon(new ImageIcon(lost.class.getResource("../image/radiobtn.png")));
 		
-		rb2.setBounds(75, 250, 70, 30);
+		rb2.setBounds(60, 250, 200, 30);
 		rb2.setFont(f2);
 		rb2.setBorderPainted(false);
 		rb2.setFocusable(false);
 		rb2.setOpaque(false);
+		rb2.setIcon(new ImageIcon(lost.class.getResource("../image/radiobtn.png")));
 		
 		// Label
 		jl1.setBounds(75, 310, 450, 45);
@@ -116,7 +116,8 @@ public class Registration extends JFrame {
 				jl1.setText("습득 날짜");
 				jl2.setText("습득물");
 				jl3.setText("습득 장소");
-
+				rb1.setIcon(new ImageIcon(lost.class.getResource("../image/radiobtn_click.png")));
+				rb2.setIcon(new ImageIcon(lost.class.getResource("../image/radiobtn.png")));
 			}
 		});
 		rb2.addActionListener(new ActionListener() {
@@ -126,7 +127,9 @@ public class Registration extends JFrame {
 				jl1.setText("분실 날짜");
 				jl2.setText("분실물");
 				jl3.setText("분실 장소");
-
+				rb1.setIcon(new ImageIcon(lost.class.getResource("../image/radiobtn.png")));
+				rb2.setIcon(new ImageIcon(lost.class.getResource("../image/radiobtn_click.png")));
+				
 			}
 		});
 
@@ -157,6 +160,7 @@ public class Registration extends JFrame {
 		
 		tf3.setBounds(75, 640, 450, 100);
 		tf3.setFont(f3);
+		tf3.setLineWrap(true); // 자동 줄바꿈
 	
 		datePicker.setBounds(75, 355, 450, 25);
 		datePicker.setFont(f3);
@@ -166,10 +170,25 @@ public class Registration extends JFrame {
 		tf1.addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent ke) {
 				JTextField src = (JTextField) ke.getSource();
-				if (src.getText().length() >= 6)
+				if (src.getText().length() >= 25)
 					ke.consume();
 			}
 		});
+		tf2.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent ke) {
+				JTextField src = (JTextField) ke.getSource();
+				if (src.getText().length() >= 25)
+					ke.consume();
+			}
+		});
+		tf3.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent ke) {
+				JTextArea src = (JTextArea) ke.getSource();
+				if (src.getText().length() >= 100)
+					ke.consume();
+			}
+		});
+		
 
 		getContentPane().add(p);
 		p.setBackground(c1);
@@ -194,7 +213,18 @@ public class Registration extends JFrame {
 		btnNewButton.setBounds(320, 775, 95, 30);
 		btnNewButton.setFont(f4);
 		
+		// 기본 사진
 		JLabel lbl = new JLabel();
+		lbl.setBackground(new Color(255, 255, 255));
+		ImageIcon icon = new ImageIcon(lost.class.getResource("../image/white.png"));
+		lbl.setIcon(icon);
+		lbl.setBounds(320, 105, 200, 200);
+		
+		// 기본 사진 비율 맞추기
+		Image img = icon.getImage();
+		Image changeImg = img.getScaledInstance(lbl.getWidth(), lbl.getHeight(), Image.SCALE_SMOOTH);
+		ImageIcon changeIcon = new ImageIcon(changeImg);
+		lbl.setIcon(changeIcon);
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			
@@ -217,8 +247,6 @@ public class Registration extends JFrame {
 				
 			}
 		});
-		
-		lbl.setBounds(320, 105, 200, 200);
 		
 		p.add(lbl);
 		p.add(btnNewButton);
