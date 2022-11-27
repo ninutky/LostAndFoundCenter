@@ -3,6 +3,7 @@ package frame;
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
+import java.awt.Dialog;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -45,9 +46,9 @@ public class Registration extends JFrame {
 	UtilDateModel model = new UtilDateModel();
 	JDatePanelImpl datePanel = new JDatePanelImpl(model);
 	JDatePickerImpl datePicker = new JDatePickerImpl(datePanel);
-	HintTextField tf1 = new HintTextField("예) 에어팟, 검정색 카드 ");
+	HintTextField tf1 = new HintTextField("예) 에어팟, 검정색 카드");
 	HintTextField tf2 = new HintTextField("예) 응용3실, 체육관");
-	HintTextArea tf3 = new HintTextArea("예) 강아지 스티커가 붙어 있어요");;
+	HintTextArea tf3 = new HintTextArea("예) 강아지 스티커가 붙어 있어요");
 	
 	// 사진 첨부 버튼
 	RoundedButton btnNewButton = new RoundedButton("사진첨부");
@@ -83,7 +84,7 @@ public class Registration extends JFrame {
 		rb1.setFont(f2);
 		rb1.setFocusable(false);
 		rb1.setOpaque(false);
-		rb1.setIcon(new ImageIcon(lost.class.getResource("../image/radiobtn.png")));
+		rb1.setIcon(new ImageIcon(lost.class.getResource("../image/radiobtn_click.png")));
 		
 		rb2.setBounds(60, 250, 200, 30);
 		rb2.setFont(f2);
@@ -109,8 +110,8 @@ public class Registration extends JFrame {
 		jl4.setFont(f2);
 		jl4.setForeground(c2);
 
+		// 습득 버튼 눌렀을 때
 		rb1.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				jl1.setText("습득 날짜");
@@ -120,8 +121,8 @@ public class Registration extends JFrame {
 				rb2.setIcon(new ImageIcon(lost.class.getResource("../image/radiobtn.png")));
 			}
 		});
+		// 분실 버튼 눌렀을 때
 		rb2.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				jl1.setText("분실 날짜");
@@ -150,7 +151,6 @@ public class Registration extends JFrame {
 			}
 		});
 
-		// 날짜 선택
 		tf1.setBounds(75, 440, 450, 40);
 		tf1.setFont(f3);
 		tf2.setToolTipText("");
@@ -189,7 +189,6 @@ public class Registration extends JFrame {
 			}
 		});
 		
-
 		getContentPane().add(p);
 		p.setBackground(c1);
 		p.add(l);
@@ -256,9 +255,18 @@ public class Registration extends JFrame {
 		btnNewButton_1.setBounds(430, 775, 95, 30);
 		btnNewButton_1.setFont(f4);
 		btnNewButton.paintComponents(getGraphics());
+		btnNewButton_1.addActionListener(e -> {
+			
+			if (tf1.getText().equals("예) 에어팟, 검정색 카드")) DialogMsg.showMessageDialog("물건을 입력해주세요.");
+			else if (tf2.getText().equals("예) 응용3실, 체육관")) DialogMsg.showMessageDialog("장소를 입력해주세요.");
+			else if (tf3.getText().equals("예) 강아지 스티커가 붙어 있어요")) DialogMsg.showMessageDialog("기타를 입력해주세요.");
+			else if (lbl.getIcon().equals(changeIcon)) DialogMsg.showMessageDialog("사진을 등록해주세요.");
+			
+		});
+		
 		p.add(btnNewButton_1);
 
-		setTitle("lost & found");
+		setTitle("Lost & Found");
 		setSize(600, 900);
 		setResizable(false);
 		setLocationRelativeTo(null);
