@@ -27,7 +27,7 @@ public class main extends JFrame {
 		p.setLayout(null);
 		l.setFont(f2);
 		l.setForeground(c2);
-		l.setBounds(80, 630, 160, 35);
+		l.setBounds(80, 630, 200, 35);
 		p.add(l);
 		t.setBounds(110, 130, 380, 58);
 		t.setIcon(title);

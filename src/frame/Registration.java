@@ -22,6 +22,10 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.text.html.ImageView;
 
+import com.github.lgooddatepicker.components.DatePicker;
+import com.github.lgooddatepicker.components.DatePickerSettings;
+import com.github.lgooddatepicker.components.DatePickerSettings.DateArea;
+
 import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
 import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
 import net.sourceforge.jdatepicker.impl.UtilDateModel;
@@ -43,9 +47,9 @@ public class Registration extends JFrame {
 	JLabel jl4 = new JLabel("기타 (물건의 특징 등)");
 	
 	// 날짜 선택
-	UtilDateModel model = new UtilDateModel();
-	JDatePanelImpl datePanel = new JDatePanelImpl(model);
-	JDatePickerImpl datePicker = new JDatePickerImpl(datePanel);
+	
+	DatePickerSettings dateSettings = new DatePickerSettings();
+	DatePicker datePicker = new DatePicker(dateSettings);
 	HintTextField tf1 = new HintTextField("예) 에어팟, 검정색 카드");
 	HintTextField tf2 = new HintTextField("예) 응용3실, 체육관");
 	HintTextArea tf3 = new HintTextArea("예) 강아지 스티커가 붙어 있어요");
@@ -71,6 +75,27 @@ public class Registration extends JFrame {
 		// TODO 디비 연동
 		// TODO 로그인 구현
 		// TODO 수정 구현
+		
+		dateSettings.setColor(DateArea.BackgroundMonthAndYearMenuLabels, c2);
+		dateSettings.setColor(DateArea.BackgroundMonthAndYearNavigationButtons, c2);
+		dateSettings.setColor(DateArea.BackgroundOverallCalendarPanel, c2);
+		dateSettings.setColor(DateArea.BackgroundTodayLabel, c2);
+		
+		dateSettings.setAllowEmptyDates(false);
+		dateSettings.setFontValidDate(f4);
+		dateSettings.setFontCalendarWeekdayLabels(f4);
+		dateSettings.setFontCalendarDateLabels(f4);
+		dateSettings.setFontCalendarWeekNumberLabels(f4);
+		dateSettings.setFontClearLabel(f4);
+		dateSettings.setFontInvalidDate(f4);
+		dateSettings.setFontMonthAndYearMenuLabels(f4);
+		dateSettings.setFontMonthAndYearNavigationButtons(f4);
+		dateSettings.setColorBackgroundWeekdayLabels(c1, true);
+		dateSettings.setFontTodayLabel(f4);
+		dateSettings.setFontValidDate(f3);	// TextField
+		dateSettings.setFontVetoedDate(f4);
+
+		
 
 		p.setLayout(null);
 		l.setFont(f1);
@@ -94,7 +119,7 @@ public class Registration extends JFrame {
 		rb2.setIcon(new ImageIcon(lost.class.getResource("../image/radiobtn.png")));
 		
 		// Label
-		jl1.setBounds(75, 310, 450, 45);
+		jl1.setBounds(75, 315, 450, 45);
 		jl1.setFont(f2);
 		jl1.setForeground(c2);
 		
@@ -160,11 +185,10 @@ public class Registration extends JFrame {
 		
 		tf3.setBounds(75, 640, 450, 100);
 		tf3.setFont(f3);
-		tf3.setLineWrap(true); // 자동 줄바꿈
+		tf3.setLineWrap(true);
 	
-		datePicker.setBounds(75, 355, 450, 25);
-		datePicker.setFont(f3);
-		
+		datePicker.getComponentDateTextField().setFont(f3);
+		datePicker.setBounds(75, 355, 450, 40);
 
 		// 글자수 제한
 		tf1.addKeyListener(new KeyAdapter() {
