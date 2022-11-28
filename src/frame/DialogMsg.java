@@ -41,6 +41,11 @@ public class DialogMsg extends JFrame {
 		btn.setFont(f4);
 		btn.addActionListener(e -> {
 			d.dispose();
+			if (msg == "글이 등록되었습니다.") {
+				d.dispose();
+				new ListFrame().setVisible(true);
+				
+			}
 		});
         
 		getContentPane().add(p);

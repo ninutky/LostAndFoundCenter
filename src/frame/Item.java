@@ -7,7 +7,7 @@ public class Item {
    boolean itype;
    String name;
    String place;
-   Date date;
+   String date;
    String ano;
    String img;
 
@@ -49,11 +49,11 @@ public class Item {
       this.place = place;
    }
 
-   public Date getDate() {
+   public String getDate() {
       return date;
    }
 
-   public void setDate(Date date) {
+   public void setDate(String date) {
       this.date = date;
    }
 

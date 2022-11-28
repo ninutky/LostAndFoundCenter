@@ -39,7 +39,7 @@ public class main extends JFrame {
 		bl.setBounds(140, 310, 150, 150); // 위치, 크기
 		bl.addActionListener(e -> {
 			dispose();
-			new lost().setVisible(true);
+			new ListFrame().setVisible(true);
 		});
 		p.add(bl);
 
@@ -50,7 +50,7 @@ public class main extends JFrame {
 		bf.setBounds(310, 310, 150, 150);
 		bf.addActionListener(e -> {
 			dispose();
-//			new found().setVisible(true);
+			new ListFrame().setVisible(true);
 		});
 		p.add(bf);
 
