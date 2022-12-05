@@ -34,7 +34,7 @@ import ui.HintTextArea;
 import ui.HintTextField;
 import ui.RoundedButton;
 
-public class Information extends JFrame {
+public class Information2 extends JFrame {
    Db db = new Db();
    JPanel p = new JPanel();
    Color c1 = new Color(0, 129, 86); // 배경 (초록)
@@ -56,7 +56,7 @@ public class Information extends JFrame {
    ButtonGroup group = new ButtonGroup();
    JButton rb1 = new JButton("heart");
   
-   public Information() {
+   public Information2() {
       text.setFont(f1);
 
       // 뒤로가기 버튼
@@ -77,7 +77,7 @@ public class Information extends JFrame {
       JLabel lbl = new JLabel();
       lbl.setBackground(new Color(255, 255, 255));
 //      ImageIcon icon = new ImageIcon(lost.class.getResource("../image/white.png"));
-      ImageIcon icon = new ImageIcon(lost.class.getResource("../image/tumble.jpeg"));
+      ImageIcon icon = new ImageIcon(lost.class.getResource("../image/tumbler.jpg"));
       lbl.setIcon(icon);
       lbl.setBounds(120, 170, 350, 350);
       
@@ -122,12 +122,12 @@ public class Information extends JFrame {
       p.add(lblNewLabel_3);
    
       rb1.setSelected(true);
-      rb1.setBounds(400, 558, 63, 50);
+      rb1.setBounds(400, 558, 30, 30);
       rb1.setBorderPainted(false);
       rb1.setContentAreaFilled(false);
       rb1.setFocusable(false);
       rb1.setOpaque(false);
-      rb1.setIcon(new ImageIcon(lost.class.getResource("../image/heart.png")));
+      rb1.setIcon(new ImageIcon(lost.class.getResource("../image/radiobtn.png")));
       
       
      
@@ -135,14 +135,14 @@ public class Information extends JFrame {
           @Override
           public void actionPerformed(ActionEvent e) {
             if (count % 2 == 0) {
-               rb1.setIcon(new ImageIcon(lost.class.getResource("../image/heart_click.png")));
+               rb1.setIcon(new ImageIcon(lost.class.getResource("../image/radiobtn_click.png")));
                count++;
                String cnt = null;
                 cnt = Integer.toString(count);
                 j_count.setText(cnt);
             }
             else {
-               rb1.setIcon(new ImageIcon(lost.class.getResource("../image/heart.png")));
+               rb1.setIcon(new ImageIcon(lost.class.getResource("../image/radiobtn.png")));
                count--;
                String cnt = null;
                 cnt = Integer.toString(count);
@@ -157,7 +157,7 @@ public class Information extends JFrame {
       j_count.setFont(f3);
       j_count.setFocusable(false);
       j_count.setOpaque(false);
-      j_count.setBounds(450, 560, 50, 50);
+      j_count.setBounds(430, 550, 50, 50);
       
       
       p.add(rb1); 
@@ -172,7 +172,7 @@ public class Information extends JFrame {
    }
 
    public static void main(String[] args) {
-      new Information().setVisible(true);
+      new Information2().setVisible(true);
 
    }
 }

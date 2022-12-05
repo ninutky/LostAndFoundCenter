@@ -17,24 +17,24 @@ import java.awt.event.*;
 import java.sql.SQLException;
 import java.awt.Component;
 
-public class ListFrame extends JFrame implements MouseListener {
+public class ListFrame2 extends JFrame implements MouseListener {
 	// UI
-	Color c1 = new Color(0, 129, 86); // (초록)
-	Color c2 = new Color(239, 177, 28); // (노랑)
+	Color c1 = new Color(0, 129, 86); // 배경 (초록)
+	Color c2 = new Color(239, 177, 28); // 글씨 (노랑)
 	Font f3 = new Font("KoPub돋움체 Medium", Font.PLAIN, 20);
 	Font f4 = new Font("KoPub돋움체 Medium", Font.PLAIN, 15);
 
 	// 뒤로가기 버튼
-	ImageIcon btImage = new ImageIcon(lost.class.getResource("../image/bbtn.png")); 
+	ImageIcon btImage = new ImageIcon(lost.class.getResource("../image/bbtn.png"));
 	JButton bback = new JButton(btImage);
 
 	RoundedButton btn = new RoundedButton("등록하기");
-	
+
 	private JTextField search;
 	private JPanel tablePanel = new JPanel();
-	private Object[][] ob = { { "스마트 워치", "응용 3실", "2022년 11월 5일" }, { "지갑", "매점", "2022년 11월 4일" },
-			{ "무선 이어폰", "강당", "2022년 11월 7일" }, { "USB", "응용 2실", "2022년 11월 1일" },
-			{ "스마트 워치", "응용 1실", "2022년 11월 2일" }, { "텀블러", "급식실", "2022년 11월 7일" }, { "담요", "응용 2실", "2022년 11월 13일" }};
+	private Object[][] ob = { { "텀블러", "급식실", "2022년 11월 7일" }, { "지갑", "매점", "2022년 11월 4일" },
+			{ "무선 이어폰", "강당", "2022년 11월 7일" }, { "스마트 워치", "응용 3실", "2022년 11월 5일" },
+			{ "USB", "응용 2실", "2022년 11월 1일" }, { "담요", "응용 2실", "2022년 11월 13일" } };
 	private String[] headers = { "물건 이름", "장소", "날짜" };
 	private JTable table;
 	private DefaultTableModel model = new DefaultTableModel(headers, 0);
@@ -52,7 +52,7 @@ public class ListFrame extends JFrame implements MouseListener {
 		}
 	}
 
-	public ListFrame() {
+	public ListFrame2() {
 		model = new DefaultTableModel(ob, headers); // 데이터 저장[][], 컬럼명
 		table = new JTable(model);
 		// 테이블
@@ -114,7 +114,7 @@ public class ListFrame extends JFrame implements MouseListener {
 			}
 		});
 		tablePanel.add(bback);
-		
+
 		// 등록하기 버튼
 		btn.setText("등록하기");
 		btn.setFont(f3);
@@ -132,7 +132,7 @@ public class ListFrame extends JFrame implements MouseListener {
 	}
 
 	public static void main(String[] args) {
-		new ListFrame().setVisible(true);
+		new ListFrame2().setVisible(true);
 
 	}
 
@@ -140,7 +140,7 @@ public class ListFrame extends JFrame implements MouseListener {
 	public void mouseClicked(MouseEvent e) {
 		if (e.getButton() == 1) {
 		} // 클릭
-		
+
 		// 더블 클릭
 		if (e.getClickCount() == 2) {
 //			int row = table.getSelectedRow(); // 행
@@ -149,7 +149,7 @@ public class ListFrame extends JFrame implements MouseListener {
 //				System.out.print("클릭됨");
 //			}
 //			System.out.println();
-			new Information().setVisible(true);
+			new Information2().setVisible(true);
 		}
 
 	}

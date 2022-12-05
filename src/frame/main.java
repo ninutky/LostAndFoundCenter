@@ -17,8 +17,8 @@ public class main extends JFrame {
 	Font f2 = new Font("KoPub돋움체 Medium", Font.PLAIN, 25);
 	Font f3 = new Font("KoPub돋움체 Medium", Font.PLAIN, 20);
 
-	RoundedButton bl = new RoundedButton("lost");
-	RoundedButton bf = new RoundedButton("found");
+	RoundedButton bl = new RoundedButton("LOST");
+	RoundedButton bf = new RoundedButton("FOUND");
 	RoundedButton btn = new RoundedButton("등록하기");
 
 	ImageIcon title = new ImageIcon(lost.class.getResource("../image/title.png"));
@@ -27,30 +27,30 @@ public class main extends JFrame {
 		p.setLayout(null);
 		l.setFont(f2);
 		l.setForeground(c2);
-		l.setBounds(80, 630, 200, 35);
+		l.setBounds(67, 602, 200, 35);
 		p.add(l);
 		t.setBounds(110, 130, 380, 58);
 		t.setIcon(title);
 		p.add(t);
-		bl.setText("lost");
+		bl.setText("LOST");
 		bl.setFont(f3);
 
 		bl.setLayout(null);
-		bl.setBounds(140, 310, 150, 150); // 위치, 크기
+		bl.setBounds(140, 282, 150, 150); // 위치, 크기
 		bl.addActionListener(e -> {
 			dispose();
 			new ListFrame().setVisible(true);
 		});
 		p.add(bl);
 
-		bf.setText("found");
+		bf.setText("FOUND");
 		bf.setFont(f3);
 
 		bf.setLayout(null);
-		bf.setBounds(310, 310, 150, 150);
+		bf.setBounds(310, 282, 150, 150);
 		bf.addActionListener(e -> {
 			dispose();
-			new ListFrame().setVisible(true);
+			new ListFrame2().setVisible(true);
 		});
 		p.add(bf);
 
@@ -63,8 +63,48 @@ public class main extends JFrame {
 
 		btn.setText("등록하기");
 		btn.setFont(f3);
-		btn.setBounds(140, 499, 320, 58);
+		btn.setBounds(140, 471, 320, 58);
 		p.add(btn);
+		
+		JLabel lblNewLabel = new JLabel();
+		JLabel lblNewLabel_1 = new JLabel();
+		JLabel lblNewLabel_2 = new JLabel();
+		
+		lblNewLabel.setBounds(64, 647, 150, 150);
+		p.add(lblNewLabel);
+		// 사진 1
+		lblNewLabel.setBackground(new Color(255, 255, 255));
+		ImageIcon icon = new ImageIcon(lost.class.getResource("../image/tumbler.jpg"));
+		lblNewLabel.setIcon(icon);
+		// 사진1 비율 맞추기
+		Image img = icon.getImage();
+		Image changeImg = img.getScaledInstance(lblNewLabel.getWidth(), lblNewLabel.getHeight(), Image.SCALE_SMOOTH);
+		ImageIcon changeIcon = new ImageIcon(changeImg);
+		lblNewLabel.setIcon(changeIcon);
+		
+		lblNewLabel_1.setBounds(226, 647, 150, 150);
+		p.add(lblNewLabel_1);
+		// 사진 2
+		ImageIcon icon2 = new ImageIcon(lost.class.getResource("../image/wlrkq.png"));
+		lblNewLabel_1.setIcon(icon2);
+		// 사진2 비율 맞추기
+		Image img2 = icon2.getImage();
+		Image changeImg2 = img2.getScaledInstance(lblNewLabel_1.getWidth(), lblNewLabel_1.getHeight(), Image.SCALE_SMOOTH);
+		ImageIcon changeIcon2 = new ImageIcon(changeImg2);
+		lblNewLabel_1.setIcon(changeIcon2);
+		
+		
+		lblNewLabel_2.setBounds(385, 647, 150, 150);
+		p.add(lblNewLabel_2);
+		// 사진 2
+		ImageIcon icon3 = new ImageIcon(lost.class.getResource("../image/earphones.png"));
+		lblNewLabel_2.setIcon(icon3);
+		// 사진2 비율 맞추기
+		Image img3 = icon3.getImage();
+		Image changeImg3 = img3.getScaledInstance(lblNewLabel_2.getWidth(), lblNewLabel_2.getHeight(), Image.SCALE_SMOOTH);
+		ImageIcon changeIcon3 = new ImageIcon(changeImg3);
+		lblNewLabel_2.setIcon(changeIcon3);
+		
 
 		setTitle("lost & found");// 타이틀
 		setSize(600, 900);// 프레임의 크기
