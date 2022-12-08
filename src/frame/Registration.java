@@ -50,7 +50,6 @@ public class Registration extends JFrame {
 	JLabel jl4 = new JLabel("기타 (물건의 특징 등)");
 
 	// 날짜 선택
-
 	DatePickerSettings dateSettings = new DatePickerSettings();
 	DatePicker datePicker = new DatePicker(dateSettings);
 	HintTextField tf1 = new HintTextField("예) 에어팟, 검정색 카드");

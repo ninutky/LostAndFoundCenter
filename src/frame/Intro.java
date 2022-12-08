@@ -40,7 +40,7 @@ public class Intro extends JFrame {
 	
 	public static void main(String[] args) {
 		new Intro();
-		new main().setVisible(true);;
+		new main().setVisible(true);
 
 	}
 

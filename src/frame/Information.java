@@ -1,19 +1,11 @@
 package frame;
 
-import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Color;
-import java.awt.Dialog;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.TextField;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
+
 import java.io.File;
 import java.sql.Connection;
 import java.util.Calendar;
@@ -45,7 +37,7 @@ public class Information extends JFrame {
    Font f4 = new Font("KoPub돋움체 Medium", Font.PLAIN, 15);
    
    JLabel text = new JLabel("물건 정보");
-   JLabel j_count = new JLabel();
+   JLabel j_count = new JLabel("0");	// 0 -> DB에 저장되어 있는 좋아요 개수
    
    int count = 0;
 
@@ -54,7 +46,7 @@ public class Information extends JFrame {
    JButton bback = new JButton(btImage);
    
    ButtonGroup group = new ButtonGroup();
-   JButton rb1 = new JButton("heart");
+   JButton rb1 = new JButton();
   
    public Information() {
       text.setFont(f1);
@@ -77,7 +69,7 @@ public class Information extends JFrame {
       JLabel lbl = new JLabel();
       lbl.setBackground(new Color(255, 255, 255));
 //      ImageIcon icon = new ImageIcon(lost.class.getResource("../image/white.png"));
-      ImageIcon icon = new ImageIcon(lost.class.getResource("../image/tumble.jpeg"));
+      ImageIcon icon = new ImageIcon(lost.class.getResource("../image/tumbler.jpg"));
       lbl.setIcon(icon);
       lbl.setBounds(120, 170, 350, 350);
       
@@ -128,8 +120,6 @@ public class Information extends JFrame {
       rb1.setFocusable(false);
       rb1.setOpaque(false);
       rb1.setIcon(new ImageIcon(lost.class.getResource("../image/heart.png")));
-      
-      
      
       rb1.addActionListener(new ActionListener() {
           @Override
@@ -157,8 +147,7 @@ public class Information extends JFrame {
       j_count.setFont(f3);
       j_count.setFocusable(false);
       j_count.setOpaque(false);
-      j_count.setBounds(450, 560, 50, 50);
-      
+      j_count.setBounds(465, 560, 50, 50);
       
       p.add(rb1); 
       p.add(j_count);
